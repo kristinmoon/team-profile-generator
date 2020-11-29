@@ -1,12 +1,14 @@
+let teamName;
+
 // create header
-const generateHeader = headerText => {
-  if (!headerText) {
+const generateHeader = teamNameText => {
+  if (!teamNameText) {
     return 'My Team';
   }
 
   return `
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">${header}</a>
+      <a href="#" class="brand-logo center">${teamName}</a>
     </div>
     `;
 };
@@ -19,8 +21,8 @@ const generateEmployees = employeesArr => {
       .map(({ employeeName, employeeID, employeeEmail, employeeRole }) => {
         return `
           <span class="card-title">${employeeName}, ${employeeRole}</span>
-            <ul class="collection">
-              <li class="collection-item">ID: ${employeeID} $</li>
+            <ul class="collection teal-text">
+              <li class="collection-item">ID: ${employeeID}</li>
               <li class="collection-item">Email: ${employeeEmail}</li>
             </ul>
           </div>
@@ -35,7 +37,7 @@ const generateEmployees = employeesArr => {
 
 module.exports = templateData => {
   // destructure employees and header data from templateData based on property key names
-  const { employees, ...header } = templateData;
+  const { employees, ...teamName } = templateData;
 
 
   return `
@@ -53,7 +55,7 @@ module.exports = templateData => {
 
   <body>
     <nav>
-      ${generateHeader(header)}
+      ${generateHeader(teamName)}
     </nav>
     <main>
       <div class="row">

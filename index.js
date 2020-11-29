@@ -1,3 +1,5 @@
+const { writeFile, copyFile } = require('./utils/generate-site.js');
+
 const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
@@ -90,4 +92,20 @@ const promptEmployee = teamData => {
 };
 
 promptUser()
-  .then(promptEmployee);
+  .then(promptEmployee)
+  .then(teamData => {
+    return generatePage(teamData);
+  })
+  .then(pageHTML => {
+    return writeFile(pageHTML);
+  })
+  .then(writeFileResponse => {
+    console.log(writeFileResponse);
+    return copyFile();
+  })
+  .then(copyFileResponse => {
+    console.log(copyFileResponse);
+  })
+  .catch(err => {
+    console.log(err);
+  });
