@@ -9,7 +9,7 @@ const generateHeader = teamName => {
 
   return `
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">${teamName}</a>
+      <a href="#" class="brand-logo center">My Team: ${teamName}</a>
     </div>
     `;
 };
