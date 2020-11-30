@@ -9,12 +9,13 @@ const Intern = require('./lib/Intern');
 
 const generatePage = require('./src/page-template.js');
 
-const promptUser = teamData => {
+const promptUser = () => {
   return inquirer.prompt([
     {
-      type: 'input',
-      name: 'teamName',
-      message: 'What is your team name?',
+      type: 'confirm',
+      name: 'generateTeam',
+      message: 'Welcome! Would you like to create a Team Profile?',
+      default: true
     }
   ]);
 };
@@ -75,12 +76,28 @@ const promptEmployee = teamData => {
       }
     },
     {
+      type: 'input',
+      name: 'managerOfficeNumber',
+      message: "If this employee is a Manager, what is their office number?",
+    },
+    {
+      type: 'input',
+      name: 'engineerGithub',
+      message: "If this employee is an Engineer, what is their GitHub username?",
+    },
+    {
+      type: 'input',
+      name: 'internSchool',
+      message: "If this employee is an Intern, where do they go to school?",
+    },
+    {
       type: 'confirm',
       name: 'confirmAddEmployee',
       message: 'Would you like to enter another employee?',
       default: false
     }
   ])
+
     .then(employeeData => {
       teamData.employees.push(employeeData);
       if (employeeData.confirmAddEmployee) {

@@ -1,23 +1,23 @@
 let teamName;
 
 // create header
-const generateHeader = teamName => {
-  JSON.stringify(teamName)
-  if (!teamName) {
-    return 'My Team';
-  }
+// const generateHeader = teamName => {
+//   JSON.stringify(teamName)
+//   if (!teamName) {
+//     return 'My Team';
+//   }
 
-  return `
-    <div class="nav-wrapper teal lighten-2">
-      <a href="#" class="brand-logo center">My Team: ${teamName}</a>
-    </div>
-    `;
-};
+//   return `
+// <div class="nav-wrapper teal lighten-2">
+//   <a href="#" class="brand-logo center">My Team</a>
+// </div>
+//     `;
+// };
 
 const generateEmployees = employeesArr => {
   return `
   ${employeesArr
-      .map(({ employeeName, employeeID, employeeEmail, employeeRole }) => {
+      .map(({ employeeName, employeeID, employeeEmail, employeeRole, managerOfficeNumber, engineerGithub, internSchool }) => {
         return `
     <div class="card blue-grey darken-1">
         <div class="card-content white-text">
@@ -25,7 +25,11 @@ const generateEmployees = employeesArr => {
           </span>
             <ul class="collection teal-text">
               <li class="collection-item">ID: ${employeeID}</li>
-              <li class="collection-item">Email: ${employeeEmail}</li>
+              <li class="collection-item">Email: <a href="mailto:${employeeEmail}">${employeeEmail}</a></li>
+              <li class="collection-item">Office Number (Manager Only): ${managerOfficeNumber}</li>
+              <li class="collection-item">GitHub Username (Engineer Only): <a href="https://github.com/${engineerGithub}" target="_blank">${engineerGithub}</a></li>
+              <li class="collection-item">School (Intern Only): ${internSchool}</li>
+
             </ul>
           </div>
           </div>
@@ -57,7 +61,9 @@ module.exports = templateData => {
 
   <body>
     <nav>
-      ${generateHeader(teamName)}
+       <div class="nav-wrapper teal lighten-2">
+          <a href="#" class="brand-logo center">My Team</a>
+        </div>
     </nav>
     <main>
       <div class="row">
