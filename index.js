@@ -9,7 +9,7 @@ const Intern = require('./lib/Intern');
 
 const generatePage = require('./src/page-template.js');
 
-const promptUser = () => {
+const promptUser = teamData => {
   return inquirer.prompt([
     {
       type: 'input',
@@ -45,6 +45,12 @@ const promptEmployee = teamData => {
       }
     },
     {
+      type: 'list',
+      name: 'employeeRole',
+      message: 'What role does this employee have within the company?',
+      choices: ['Manager', 'Engineer', 'Intern'],
+    },
+    {
       type: 'input',
       name: 'employeeID',
       message: "Please enter your employee's ID: (Required)",
@@ -67,12 +73,6 @@ const promptEmployee = teamData => {
           console.log('Please enter an email address.');
         }
       }
-    },
-    {
-      type: 'list',
-      name: 'employeeRole',
-      message: 'What role does this employee have within the company?',
-      choices: ['Manager', 'Engineer', 'Intern'],
     },
     {
       type: 'confirm',

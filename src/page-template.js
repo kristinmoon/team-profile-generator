@@ -8,7 +8,7 @@ const generateHeader = teamName => {
   }
 
   return `
-    <div class="nav-wrapper">
+    <div class="nav-wrapper teal lighten-2">
       <a href="#" class="brand-logo center">My Team: ${teamName}</a>
     </div>
     `;
@@ -66,7 +66,7 @@ module.exports = templateData => {
           </div>
       </div>
     </main>
-    <footer class="page-footer">
+    <footer class="page-footer teal lighten-2">
       <div class="footer-copyright">
         <div class="container">
         © 2020 Moon, Ink
