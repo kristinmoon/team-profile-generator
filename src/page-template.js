@@ -1,8 +1,9 @@
 let teamName;
 
 // create header
-const generateHeader = teamNameText => {
-  if (!teamNameText) {
+const generateHeader = teamName => {
+  JSON.stringify(teamName)
+  if (!teamName) {
     return 'My Team';
   }
 
@@ -15,21 +16,22 @@ const generateHeader = teamNameText => {
 
 const generateEmployees = employeesArr => {
   return `
-    <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-      ${employeesArr
+  ${employeesArr
       .map(({ employeeName, employeeID, employeeEmail, employeeRole }) => {
         return `
-          <span class="card-title">${employeeName}, ${employeeRole}</span>
+    <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">${employeeName}, ${employeeRole}
+          </span>
             <ul class="collection teal-text">
               <li class="collection-item">ID: ${employeeID}</li>
               <li class="collection-item">Email: ${employeeEmail}</li>
             </ul>
           </div>
+          </div>
         `;
       })
       .join('')}
-    </section>
     `;
 };
 
@@ -61,7 +63,7 @@ module.exports = templateData => {
       <div class="row">
           <div class="col s12 m6">      
           ${generateEmployees(employees)}
-      </div>
+          </div>
       </div>
     </main>
     <footer class="page-footer">
