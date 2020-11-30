@@ -1,19 +1,5 @@
 let teamName;
 
-// create header
-// const generateHeader = teamName => {
-//   JSON.stringify(teamName)
-//   if (!teamName) {
-//     return 'My Team';
-//   }
-
-//   return `
-// <div class="nav-wrapper teal lighten-2">
-//   <a href="#" class="brand-logo center">My Team</a>
-// </div>
-//     `;
-// };
-
 const generateEmployees = employeesArr => {
   return `
   ${employeesArr
